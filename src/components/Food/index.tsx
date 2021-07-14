@@ -1,20 +1,21 @@
-import { Component } from 'react';
+import React, {useState} from 'react';
 import { FiEdit3, FiTrash } from 'react-icons/fi';
 
 import { Container } from './styles';
 import api from '../../services/api';
 
-class Food extends Component {
-  constructor(props) {
-    super(props);
+interface foodProps {
+  available: boolean
+}
 
-    const { available } = this.props.food;
+export function Food(props: foodProps) {
+
+    const { available } = props;
     this.state = {
       isAvailable: available
     };
-  }
 
-  toggleAvailable = async () => {
+  async function toggleAvailable() {
     const { food } = this.props;
     const { isAvailable } = this.state;
 
